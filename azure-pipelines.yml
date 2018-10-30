@@ -12,8 +12,17 @@ steps:
     versionSpec: '8.x'
   displayName: 'Install Node.js'
 
+- task: azure-cosmosdb.emulator-public-preview.run-cosmosdbemulatorcontainer.CosmosDbEmulator@2
+  displayName: 'Run Azure Cosmos DB Emulator container'
+
 - script: |
     npm install
+  displayName: 'npm install'
+
+- script: |
     npm run build
+  displayName: 'npm build'
+
+- script: |
     npm run test
-  displayName: 'npm install and build'
+  displayName: 'npm test'
